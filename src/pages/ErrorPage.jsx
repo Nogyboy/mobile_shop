@@ -1,6 +1,6 @@
 function ErrorPage() {
   return (
-    <div>ErrorPage</div>
+    <div className="text-5xl">ErrorPage</div>
   )
 }
 
