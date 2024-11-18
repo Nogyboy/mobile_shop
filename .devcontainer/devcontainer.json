@@ -1,0 +1,24 @@
+{
+	"name": "Node.js 20 with pnpm",
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {},
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss"
+			]
+		}
+	},
+	"portsAttributes": {
+		"5173": {
+			"label": "Mobile Shop",
+			"onAutoForward": "openBrowser"
+		}
+	},
+	"postCreateCommand": "pnpm install"
+}
