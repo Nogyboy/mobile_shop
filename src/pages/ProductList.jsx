@@ -1,6 +1,6 @@
-function ProductList() {
+function ProductList () {
   return (
-    <div className="">ProductList</div>
+    <div className=''>ProductList</div>
   )
 }
 

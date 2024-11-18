@@ -1,6 +1,6 @@
-import { Outlet } from "react-router";
+import { Outlet } from 'react-router'
 
-function Layout() {
+function Layout () {
   return (
     <div>
       Layout
@@ -8,7 +8,7 @@ function Layout() {
         <Outlet />
       </main>
     </div>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

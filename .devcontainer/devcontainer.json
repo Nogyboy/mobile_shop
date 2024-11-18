@@ -10,7 +10,8 @@
 			"extensions": [
 				"dbaeumer.vscode-eslint",
 				"esbenp.prettier-vscode",
-				"bradlc.vscode-tailwindcss"
+				"bradlc.vscode-tailwindcss",
+				"standard.vscode-standard"
 			]
 		}
 	},

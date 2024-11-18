@@ -1,4 +1,4 @@
-function ProductDetail() {
+function ProductDetail () {
   return (
     <div>ProductDetail</div>
   )
