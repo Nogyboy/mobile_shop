@@ -1,4 +1,4 @@
-# Technica Assesment - Mobile Shop
+# TechnicaL Assessment - Mobile Shop
 
 ## Description
 Mini web app for mobile shopping, consist of a product list page, and a product details page. User is able to search products, check details, select options and add to the cart. Data come from an API provided.
