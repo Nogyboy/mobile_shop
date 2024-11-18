@@ -6,5 +6,9 @@ export default {
   theme: {
     extend: {}
   },
+  daisyui: {
+    themes: ['light'],
+    logs: false
+  },
   plugins: [daisyui]
 }
