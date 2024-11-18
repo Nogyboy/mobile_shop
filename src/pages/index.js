@@ -1,9 +1,9 @@
-import ProductListPage from './ProductList'
-import ProductDetail from './ProductDetail'
+import ProductListPage from './ProductListPage'
+import ProductDetailPage from './ProductDetailPage'
 import ErrorPage from './ErrorPage'
 
 export {
-  ProductDetail,
+  ProductDetailPage,
   ProductListPage,
   ErrorPage
 }

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function ProductListCard ({ product }) {
   return (
     <div className='card bg-base-100 w-72 shadow-xl'>
@@ -12,7 +14,9 @@ function ProductListCard ({ product }) {
         <p>{product.model}</p>
         <p className='text-info'>{product.price === '' ? 'Not Available' : `$${product.price}`}</p>
         <div className='card-actions justify-end'>
-          <button className='btn btn-primary'>Buy Now</button>
+          <Link to={`/product/${product.id}`} className='btn btn-primary'>
+            Buy Now
+          </Link>
         </div>
       </div>
     </div>

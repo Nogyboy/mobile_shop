@@ -1,8 +1,10 @@
 import Container from '../components/Container/Container'
-import productData from '../../mock/data.json'
 import ProductListCard from '../components/Cards/ProductList'
+import { useGetAllProducts } from '../hooks/useGetAllProducts'
 
 function ProductListPage () {
+  const { products, isLoading, error } = useGetAllProducts('')
+
   return (
     <Container>
       <div className='flex justify-between'>
@@ -26,9 +28,19 @@ function ProductListPage () {
       </div>
       {/* Products Grid */}
       <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-10'>
-        {productData.map((product, index) => (
+        {products?.map((product, index) => (
           <ProductListCard key={index} product={product} />
         ))}
+        {isLoading && (
+          <div className='flex justify-center items-center'>
+            <div className='animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-gray-200' />
+          </div>
+        )}
+        {error && (
+          <div className='flex justify-center items-center'>
+            <div className='text-red-500'>Error fetching products</div>
+          </div>
+        )}
       </div>
       <div />
     </Container>
