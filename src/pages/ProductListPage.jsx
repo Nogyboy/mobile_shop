@@ -41,7 +41,7 @@ function ProductListPage () {
         )}
         {error && (
           <div className='flex justify-center items-center'>
-            <div className='text-red-500'>Error fetching products</div>
+            <div className='text-red-500'>No products found</div>
           </div>
         )}
       </div>
