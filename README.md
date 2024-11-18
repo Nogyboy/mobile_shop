@@ -3,6 +3,10 @@
 ## Description
 Mini web app for mobile shopping, consist of a product list page, and a product details page. User is able to search products, check details, select options and add to the cart. Data come from an API provided.
 
+## Live Preview
+The site is deployed on the following link:
+[Mobile Shop](https://mobile-shop-nine.vercel.app/)
+
 ## Tech Stack
 - React
 - React Router
