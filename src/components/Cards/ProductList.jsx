@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function ProductListCard ({ product }) {
   return (
     <div className='card bg-base-100 w-72 shadow-xl'>
-      <figure className='pt-2'>
+      <figure className='pt-2 aspect-square'>
         <img
           src={product.imgUrl}
           alt='Shoes'

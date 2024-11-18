@@ -1,9 +1,12 @@
 import Container from '../components/Container/Container'
 import ProductListCard from '../components/Cards/ProductList'
 import { useGetAllProducts } from '../hooks/useGetAllProducts'
+import debounce from 'just-debounce-it'
 
 function ProductListPage () {
-  const { products, isLoading, error } = useGetAllProducts('')
+  const { products, isLoading, error, setSearchText } = useGetAllProducts('')
+
+  const debouncedSearch = debounce(setSearchText, 300)
 
   return (
     <Container>
@@ -11,7 +14,7 @@ function ProductListPage () {
         <h1 className='text-3xl font-bold'>Product List</h1>
         {/* Search Bar */}
         <label className='input input-bordered flex items-center gap-2'>
-          <input type='text' className='grow' placeholder='Search' />
+          <input type='text' className='grow' placeholder='Search' onChange={(e) => debouncedSearch(e.target.value)} />
           <svg
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 16 16'

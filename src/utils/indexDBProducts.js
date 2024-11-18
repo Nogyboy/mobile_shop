@@ -5,7 +5,7 @@ const STORE_NAME = 'productsList'
 const STORE_NAME_PRODUCT = 'productsDetail'
 const DB_VERSION = 1
 
-export const initDB = async () => {
+const initDB = async () => {
   return await openDB(DB_NAME, DB_VERSION, {
     upgrade (db) {
       if (!db.objectStoreNames.contains(STORE_NAME)) {
@@ -38,5 +38,15 @@ export const setAllProductsLocal = async (products) => {
   // Set all products
   products.forEach((product) => {
     db.put(STORE_NAME, product, product.id)
+  })
+}
+
+// Search products
+export const searchProductsLocal = async (searchText) => {
+  const db = await initDB()
+  const products = await db.getAll(STORE_NAME)
+  return products.filter((product) => {
+    return product.brand.toLowerCase().includes(searchText.toLowerCase()) ||
+      product.model.toLowerCase().includes(searchText.toLowerCase())
   })
 }

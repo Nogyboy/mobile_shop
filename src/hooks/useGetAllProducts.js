@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { fetchGetAllProducts } from '../services/products'
-import { getAllProductsLocal, setAllProductsLocal } from '../utils/indexDBProducts'
+import { getAllProductsLocal, setAllProductsLocal, searchProductsLocal } from '../utils/indexDBProducts'
 import { getProductDBTimestamp } from '../utils/localStorage'
 
-export const useGetAllProducts = (searchText) => {
+export const useGetAllProducts = () => {
   const [products, setProducts] = useState([])
+  const [searchText, setSearchText] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -35,13 +36,13 @@ export const useGetAllProducts = (searchText) => {
       if (diff > 3600000) {
         getAllProductsRemote()
           .then(() => {
-            getAllProductsLocal()
+            searchProductsLocal()
               .then((products) => {
                 setProducts(products)
               })
           })
       } else {
-        getAllProductsLocal()
+        searchProductsLocal(searchText)
           .then((products) => {
             setProducts(products)
           })
@@ -58,5 +59,5 @@ export const useGetAllProducts = (searchText) => {
   },
   [searchText])
 
-  return { products, isLoading, error }
+  return { products, isLoading, error, searchText, setSearchText }
 }
