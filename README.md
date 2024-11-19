@@ -41,3 +41,16 @@ The JSON file contains the configuration of a Docker image with Node and PNPM in
 - Node 18
 - PNPM(Optional, faster alternative to NPM)
 
+# Testing
+Playwright is used for testing the app. It is a powerful tool that allows you to automate end-to-end testing of web applications. It's necessary to install the Playwright Extension for VS Code to install dependencies, because it is posible to launch Browsers a see the execution of the tests.
+
+Check the [Playwright Documentation](https://playwright.dev/docs/intro) for more information.
+
+## How to execute
+- Install dependencies using `pnpm install` or `npm install`
+- To run tests use `pnpm run test`
+
+### Requirements
+- Node 18
+- PNPM(Optional, faster alternative to NPM)
+- Playwright
