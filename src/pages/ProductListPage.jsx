@@ -15,6 +15,8 @@ function ProductListPage () {
         {/* Search Bar */}
         <label className='input input-bordered flex items-center gap-2'>
           <input
+            id='search'
+            name='search'
             type='text'
             className='grow'
             placeholder='Search'
@@ -35,7 +37,7 @@ function ProductListPage () {
         </label>
       </div>
       {/* Products Grid */}
-      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-2 md:py-10 w-full'>
+      <div id='ListProducts' name='ListProducts' className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-2 md:py-10 w-full'>
         {
           products?.length === 0 &&
             <div className='flex justify-center items-center'>
