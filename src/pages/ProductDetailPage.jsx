@@ -1,7 +1,12 @@
 import Container from '../components/Container/Container'
-import productData from '../../mock/productData.json'
+import { useGetProductDetail } from '../hooks/useGetProductDetail'
+import { useParams } from 'react-router-dom'
 
 function ProductDetailPage () {
+  const { id } = useParams()
+
+  const { product } = useGetProductDetail(id)
+
   return (
     <Container>
       <div className='flex justify-between'>
@@ -9,55 +14,60 @@ function ProductDetailPage () {
       </div>
       <main className='flex flex-col md:flex-row gap-4 pb-10'>
         {/* Product Image */}
-        <figure className='w-full md:w-1/2 md:shrink-0 flex justify-center'>
-          <img src={productData.imgUrl} alt='Shoes' className='py-5' />
-        </figure>
+        <div className='w-full md:w-1/2'>
+          <figure className='flex justify-center aspect-square mx-auto'>
+            <img
+              src={product?.imgUrl}
+              alt='Shoes'
+              className='py-5 object-contain w-full'
+            />
+          </figure>
+        </div>
         {/* Product Info */}
         <aside className='w-full md:w-1/2'>
-          <h2 className='text-2xl font-bold uppercase'>{productData.brand}</h2>
-          <p className='text-xl'>{productData.model}</p>
+          <h2 className='text-2xl font-bold uppercase'>{product?.brand}</h2>
+          <p className='text-xl'>{product?.model}</p>
           <p className='text-info'>
-            {productData.price === ''
-              ? 'Not Available'
-              : `$${productData.price}`}
+            {product?.price === '' ? 'Not Available' : `$${product?.price}`}
           </p>
           <div className='pl-1'>
             <div>
               <p className='font-bold'>CPU: </p>
               <ul className='list-disc pl-10'>
-                {productData.cpu.map((cpu) => (
+                {/* {product?.cpu?.map((cpu) => (
                   <li key={cpu}>{cpu}</li>
-                ))}
+                ))} */}
+                {product?.cpu}
               </ul>
             </div>
             <p>
-              <span className='font-bold'>RAM:</span> {productData.ram}
+              <span className='font-bold'>RAM:</span> {product?.ram}
             </p>
             <p>
-              <span className='font-bold'>OS:</span> {productData.os}
+              <span className='font-bold'>OS:</span> {product?.os}
             </p>
             <p>
               <span className='font-bold'>Screen Resolution:</span>{' '}
-              {productData.displayResolution}
+              {product?.displayResolution}
             </p>
             <p>
-              <span className='font-bold'>Battery:</span> {productData.battery}
+              <span className='font-bold'>Battery:</span> {product?.battery}
             </p>
-            <div className='flex gap-3'>
+            <div className='flex gap-2'>
               <span className='font-bold'>Cameras:</span>
-              <p className='border border-gray-400 p-1 max-w-[200px]'>
-                {productData.primaryCamera}
+              <p className='border border-gray-400 rounded-md p-1 max-w-[200px]'>
+                {product?.primaryCamera}
               </p>
-              <p className='border border-gray-400 p-1 max-w-[200px]'>
-                {productData.secondaryCmera}
+              <p className='border border-gray-400 p-1 max-w-[200px] rounded-md'>
+                {product?.secondaryCmera}
               </p>
             </div>
             <p>
               <span className='font-bold'>Dimensions:</span>{' '}
-              {productData.dimentions}
+              {product?.dimentions}
             </p>
             <p>
-              <span className='font-bold'>Weight:</span> {productData.weight}
+              <span className='font-bold'>Weight:</span> {product?.weight}
             </p>
           </div>
           {/* Selectors */}
@@ -69,7 +79,7 @@ function ProductDetailPage () {
                   <span className='label-text'>Colors</span>
                 </div>
                 <select className='select select-bordered'>
-                  {productData.options.colors.map((color) => (
+                  {product?.options?.colors?.map((color) => (
                     <option key={color.code} value={color.code}>
                       {color.name}
                     </option>
@@ -81,7 +91,7 @@ function ProductDetailPage () {
                   <span className='label-text'>Storage</span>
                 </div>
                 <select className='select select-bordered'>
-                  {productData.options.storages.map((storage) => (
+                  {product?.options?.storages?.map((storage) => (
                     <option key={storage.code} value={storage.code}>
                       {storage.name}
                     </option>

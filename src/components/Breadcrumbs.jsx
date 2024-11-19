@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router-dom'
 import Container from './Container/Container'
+import { useGetProductDetail } from '../hooks/useGetProductDetail'
 
 function Breadcrumbs () {
   const { id } = useParams()
 
-  console.log(id)
+  const { product } = useGetProductDetail(id)
+
   return (
     <Container>
       <div className='breadcrumbs text-sm'>
@@ -12,9 +14,12 @@ function Breadcrumbs () {
           <li>
             <Link to='/'>Home</Link>
           </li>
-          <li>
-            <a>{id}</a>
-          </li>
+          {
+            id &&
+              <li>
+                <a>{product?.brand} - {product?.model}</a>
+              </li>
+          }
         </ul>
       </div>
     </Container>

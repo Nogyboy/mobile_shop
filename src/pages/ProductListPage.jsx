@@ -36,6 +36,12 @@ function ProductListPage () {
       </div>
       {/* Products Grid */}
       <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-10'>
+        {
+          products?.length === 0 &&
+            <div className='flex justify-center items-center'>
+              <div className='text-red-500'>No products found</div>
+            </div>
+        }
         {products?.map((product, index) => (
           <ProductListCard key={index} product={product} />
         ))}
@@ -54,7 +60,7 @@ function ProductListPage () {
               stroke-width='2'
             >
               <path
-                stroke-dasharray='16'
+                strokeDasharray='16'
                 stroke-dashoffset='16'
                 d='M12 3c4.97 0 9 4.03 9 9'
               >
