@@ -2,8 +2,8 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "type": "pnpm",
-            "script": "dev",
+            "type": "npm",
+            "script": "start",
             "runOptions": {
                 "runOn": "folderOpen"
             }
