@@ -10,7 +10,7 @@ function ProductListPage () {
 
   return (
     <Container>
-      <div className='flex justify-between'>
+      <div className='flex flex-col gap-3 md:flex-row justify-between'>
         <h1 className='text-3xl font-bold'>Product List</h1>
         {/* Search Bar */}
         <label className='input input-bordered flex items-center gap-2'>
@@ -35,7 +35,7 @@ function ProductListPage () {
         </label>
       </div>
       {/* Products Grid */}
-      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-10'>
+      <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 py-2 md:py-10 w-full'>
         {
           products?.length === 0 &&
             <div className='flex justify-center items-center'>
