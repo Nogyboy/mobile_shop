@@ -56,7 +56,7 @@ function SideBarCart ({ sidebarId }) {
             ))}
           </div>
           {/* Subtotal */}
-          <div className='flex justify-between items-center'>
+          <div className='flex justify-between items-center px-2'>
             <span className='text-lg font-bold'>Total:</span>
             <span className='text-info'>$999</span>
           </div>

@@ -1,11 +1,42 @@
+import { useId, useContext } from 'react'
 import Container from '../components/Container/Container'
 import { useGetProductDetail } from '../hooks/useGetProductDetail'
 import { useParams } from 'react-router-dom'
+import { useAddToCart } from '../hooks/useAddToCart'
+import { CartContext } from '../context/cart'
 
 function ProductDetailPage () {
   const { id } = useParams()
 
+  const colorId = useId()
+  const storageId = useId()
+
   const { product } = useGetProductDetail(id)
+  const { addProductToCart, isLoading } = useAddToCart()
+
+  const contextCart = useContext(CartContext)
+
+  const handleAddToCart = async () => {
+    const colorCode = document.getElementById(colorId).value
+    const storageCode = document.getElementById(storageId).value
+    addProductToCart(id, colorCode, storageCode)
+      .then((result) => {
+        if (result) {
+          contextCart.addOrUpdateProduct(
+            {
+              id,
+              image: product.imgUrl,
+              brand: product.brand,
+              model: product.model,
+              price: product.price,
+              color: colorCode,
+              storage: storageCode,
+              quantity: 1
+            }
+          )
+        }
+      })
+  }
 
   return (
     <Container>
@@ -78,7 +109,7 @@ function ProductDetailPage () {
                 <div className='label'>
                   <span className='label-text'>Colors</span>
                 </div>
-                <select className='select select-bordered'>
+                <select id={colorId} className='select select-bordered'>
                   {product?.options?.colors?.map((color) => (
                     <option key={color.code} value={color.code}>
                       {color.name}
@@ -90,7 +121,7 @@ function ProductDetailPage () {
                 <div className='label'>
                   <span className='label-text'>Storage</span>
                 </div>
-                <select className='select select-bordered'>
+                <select id={storageId} className='select select-bordered'>
                   {product?.options?.storages?.map((storage) => (
                     <option key={storage.code} value={storage.code}>
                       {storage.name}
@@ -103,7 +134,16 @@ function ProductDetailPage () {
           {/* Actions */}
           <div className='mt-10'>
             <div className='flex gap-4'>
-              <div className='btn btn-primary'>Add to Cart</div>
+              <button
+                className='btn btn-primary' onClick={handleAddToCart}
+                disabled={isLoading}
+              >
+                {
+                  isLoading
+                    ? 'Adding to cart...'
+                    : 'Add to Cart'
+                }
+              </button>
             </div>
           </div>
         </aside>
